@@ -1,0 +1,8 @@
+#game-window{
+	background-color: green;
+	position: relative;
+}
+#player{
+	background: red;
+	position: absolute;
+}
