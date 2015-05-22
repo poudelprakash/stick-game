@@ -5,7 +5,9 @@ function Player(game){
 	this.posX = 200;
 	this.bottom = 0;
 	this.height = 80;
-	this.width = 40;	
+	this.width = 40;		
+
+	this.nextEnd = 0;
 	this.rightEnd = game.screenWidth - this.width;
 
 	var that =  this;
@@ -23,7 +25,7 @@ function Player(game){
 	this.moveRight = function(){
 		// moves player right
 		if(that.posX < that.rightEnd){
-		that.posX += 10;
+		that.posX += 5;
 		that.player.style.left = that.posX + 'px';
 		}
 	}

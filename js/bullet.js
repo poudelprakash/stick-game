@@ -7,7 +7,10 @@ function Bullet(game){
 	this.bulletPosY = 0;
 	this.fired = false;
 
-	this.bulletUpdateInterval;
+	this.bulletInclinationAngle = 20;
+
+	this.animationInterval;
+	this.playerUpdateInterval;
 
 	var that = this;
 
@@ -19,16 +22,49 @@ function Bullet(game){
 			that.bullet.style.left = game.player.posX + game.player.width + 'px'
 			that.bullet.style.bottom = '0px';
 			that.bullet.style.background = '#000';
-			that.bullet.style.position = 'absolute'
+			that.bullet.style.position = 'absolute';
+			that.bullet.style.transform = 'rotate('+that.bulletInclinationAngle+'deg)';
+			that.bullet.style.transformOrigin = '100% 100%'
 			that.gameWindow.appendChild(that.bullet);
+			that.animationInterval = setInterval(animate, 50);
 		}
 
 	}
+
+	this.updateBullet = function(){
+
+
+	}
+
 	this.destroyBullet = function(){
 		//clearing bullet resources
 		that.fired = false;
-		that.bulletPosY = that.bulletHeight;
-		clearInterval(that.bulletUpdateInterval);
-		that.gameWindow.removeChild(that.bullet);
+		that.bulletInclinationAngle = 0;
+		clearInterval(that.animationInterval);
+		
+		// that.gameWindow.removeChild(that.bullet);
+	}
+
+	this.movePlayer = function(){
+		if(game.player.posX <= game.player.nextEnd){
+			game.player.moveRight();
+		}else{
+			clearInterval(that.playerUpdateInterval);
+		}
+	}
+
+	// private function
+	var animate = function(){
+		if(that.bulletInclinationAngle <= 88){
+			that.bulletInclinationAngle += 2;
+			that.bullet.style.transform = 'rotate('+that.bulletInclinationAngle+'deg)';
+		}else{
+			// move player
+			// destroy bullet
+			that.destroyBullet();
+			game.player.nextEnd = game.player.posX + game.player.width + that.bulletHeight;
+
+			that.playerUpdateInterval = setInterval(that.movePlayer, 25);
+		}
 	}
 }
