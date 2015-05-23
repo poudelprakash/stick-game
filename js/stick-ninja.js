@@ -5,11 +5,13 @@ function NinjaGame(){
 	this.screenWidth = 800;
 	this.screenHeight = 400;
 	this.gameWindow = document.getElementById('game-window');
+	this.innerScreen = document.getElementById('background'); 
 	this.gameWindow.style.width = this.screenWidth + 'px';
 	this.gameWindow.style.height = this.screenHeight + 'px';
 
 	this.player;
 	this.stick;
+	this.bgPosition = 0;
 
 	var self = this;
 
@@ -24,15 +26,21 @@ function NinjaGame(){
 		document.addEventListener('keyup', self.onkeyup, false);
 	}
 
-	//event hendler
+	this.moveBg =function() {
+		self.bgPosition -= self.stick.stickLength;
+		self.innerScreen.style.marginLeft = self.bgPosition + "px";
+	}
+	//event handler
 	this.onkeydown=function(event){
 		// keyboard keys handler
 		if(event.keyCode == 32){//for space key
+			game.stick.show();
 			if (game.stick.fired == false){
 				game.stick.updateStickLength();
 			}
 		}
 		if(event.keyCode == 37 ){//for left Arrow
+			self.moveBg();
 			// self.player.moveLeft();
 		}
 		if(event.keyCode == 39){//for Right Arrow

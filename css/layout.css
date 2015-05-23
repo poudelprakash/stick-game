@@ -1,6 +1,12 @@
 #game-window{
 	background-color: green;
 	position: relative;
+	overflow: hidden;
+}
+#background{
+	width: 10000px;
+	height: 400px;
+	background-image: url(../images/background.jpg);
 }
 #player{
 	background: black;

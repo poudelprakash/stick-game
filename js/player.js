@@ -1,7 +1,7 @@
 function Player(game){
 
 	this.gameWindow = game.gameWindow;
-	this.player;
+	this.$player;
 	this.initialPosition = 40;
 	this.posX;
 	this.bottom = 0;
@@ -15,13 +15,13 @@ function Player(game){
 	var self =  this;
 
 	this.createPlayer = function(){
-		self.player = document.createElement('div');
-		self.player.style.width = self.width + 'px';
-		self.player.style.height =  self.height + 'px'
-		self.player.style.bottom = self.bottom + 'px';
-		self.player.id = 'player';
+		self.$player = document.createElement('div');
+		self.$player.style.width = self.width + 'px';
+		self.$player.style.height =  self.height + 'px'
+		self.$player.style.bottom = self.bottom + 'px';
+		self.$player.id = 'player';
 		self.resetPosition();
-		self.gameWindow.appendChild(self.player);
+		self.gameWindow.appendChild(self.$player);
 	}
 
 	this.movePlayer = function(){
@@ -36,28 +36,29 @@ function Player(game){
 
 	var destinationAnimation = function(){
 		clearInterval(self.intervalId);
-		game.stick.destroyStick();
+		game.stick.resetStick();
+		game.moveBg();
 		self.resetPosition();
 	}
 
 	this.resetPosition = function(){
 		self.posX = self.initialPosition;
-		self.player.style.left = self.posX + 'px';
+		self.$player.style.left = self.posX + 'px';
 	}
 
 	this.climbStick = function(){
-		self.player.style.bottom = game.stick.stick.style.width;
+		self.$player.style.bottom = game.stick.$stick.style.width;
 	}
 
 	this.climbDown = function(){
-		self.player.style.bottom = '0px';
+		self.$player.style.bottom = '0px';
 	}
 
 	this.moveRight = function(){
 		// moves player right
 		if(self.posX < self.rightEnd){
 		self.posX += 5;
-		self.player.style.left = self.posX + 'px';
+		self.$player.style.left = self.posX + 'px';
 		}
 	}
 
@@ -65,7 +66,7 @@ function Player(game){
 		// moves player left
 		if(self.posX > 0){
 			self.posX -= 10;
-			self.player.style.left = self.posX + 'px';
+			self.$player.style.left = self.posX + 'px';
 		}
 	}
 }
