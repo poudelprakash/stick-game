@@ -27,7 +27,7 @@ function NinjaGame(){
 	}
 
 	this.moveBg =function() {
-		self.bgPosition -= self.stick.stickLength;
+		self.bgPosition -= self.stick.stickLength/10;
 		self.innerScreen.style.marginLeft = self.bgPosition + "px";
 	}
 	//event handler

@@ -6,7 +6,8 @@
 #background{
 	width: 10000px;
 	height: 400px;
-	background-image: url(../images/background.jpg);
+	background: url(../images/background.jpg);
+	background-repeat: repeat-x;
 }
 #player{
 	background: black;
