@@ -28,8 +28,9 @@ function NinjaGame(){
 	this.onkeydown=function(event){
 		// keyboard keys handler
 		if(event.keyCode == 32){//for space key
-			// self.stick.fireStick();
-			self.stick.updateStickLength();
+			if (game.stick.fired == false){
+				game.stick.updateStickLength();
+			}
 		}
 		if(event.keyCode == 37 ){//for left Arrow
 			// self.player.moveLeft();

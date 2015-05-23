@@ -5,7 +5,7 @@ function Stick(game){
 	this.stickWidth = 5;
 	this.stickPosX = 0;
 	this.stickPosY = 0;
-	this.fired = false;
+	this.fired;
 
 	this.stickInclinationAngle = 0;
 
@@ -29,12 +29,13 @@ function Stick(game){
 	}
 
 	this.resetStick = function(){
+		self.fired = false;
 		resetLength();
 		resetInclinationAngle();
 	}
 
 	this.updateStickLength = function(){
-		if(self.stickLength < game.screenHeight ){
+		if(self.stickLength < game.screenHeight){
 			self.stickLength += 5;
 			self.show();
 			self.stick.style.height = self.stickLength + 'px';	
@@ -42,29 +43,14 @@ function Stick(game){
 	}
 
 	this.tilt = function(){
+		if (self.fired == false){
+
 		self.animationInterval = setInterval(animate, 40);
-	}
-
-	this.fireStick = function(){
-		if(self.fired == false){
-			self.stick = document.createElement('div');
-			self.stick.style.width = self.stickWidth + 'px'
-			self.stick.style.height = self.stickHeight + 'px';
-			self.stick.style.left = game.player.posX + game.player.width - self.stickWidth + 'px'
-			self.stick.style.bottom = '0px';
-			self.stick.style.background = '#000';
-			self.stick.style.position = 'absolute';
-			self.stick.style.transform = 'rotate('+self.stickInclinationAngle+'deg)';
-			self.stick.style.transformOrigin = '100% 100%';
-			self.gameWindow.appendChild(self.stick);
-			self.animationInterval = setInterval(animate, 40);
 		}
-
 	}
 
 	this.destroyStick = function(){
 		//clearing stick resources
-		self.fired = false;
 		self.resetStick();
 		self.hide();
 		// self.gameWindow.removeChild(self.stick);
