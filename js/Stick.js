@@ -4,7 +4,7 @@ function Stick(game){
 	this.stickWidth = 5;
 	this.stickLength=0;
 	this.stickPosX = 0;
-	this.stickPosY = 0;
+	this.stickPosY = 120;
 	this.stickInclinationAngle = 0;
 	this.fired; //fired status boolean
 
@@ -16,7 +16,7 @@ function Stick(game){
 		self.$stick = document.createElement('div');
 		self.$stick.style.width = self.stickWidth + 'px';
 		self.$stick.style.left = game.player.posX + game.player.width - self.stickWidth + 'px'
-		self.$stick.style.bottom = '0px';
+		self.$stick.style.bottom = self.stickPosY + 'px';
 		self.$stick.style.background = '#000';
 		self.$stick.style.position = 'absolute';
 		self.$stick.style.transformOrigin = '100% 100%';

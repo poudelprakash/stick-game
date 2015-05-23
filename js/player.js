@@ -4,7 +4,7 @@ function Player(game){
 	this.$player;
 	this.initialPosition = 40;
 	this.posX;
-	this.bottom = 0;
+	this.bottom = 120;
 	this.height = 80;
 	this.width = 40;		
 
@@ -47,11 +47,11 @@ function Player(game){
 	}
 
 	this.climbStick = function(){
-		self.$player.style.bottom = game.stick.$stick.style.width;
+		self.$player.style.bottom = self.bottom + game.stick.stickWidth + 'px';
 	}
 
 	this.climbDown = function(){
-		self.$player.style.bottom = '0px';
+		self.$player.style.bottom = self.bottom+'px';
 	}
 
 	this.moveRight = function(){

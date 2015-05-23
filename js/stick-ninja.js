@@ -11,6 +11,7 @@ function NinjaGame(){
 
 	this.player;
 	this.stick;
+	this.building;
 	this.bgPosition = 0;
 
 	var self = this;
@@ -21,6 +22,14 @@ function NinjaGame(){
 
 		self.stick = new Stick(self);
 		self.stick.initialise();
+
+		self.building = new Building(self);
+		// self.building.createBuilding(20, 30);
+		// self.building.createBuilding(80, 40);
+		self.building.createBuilding(self.player.posX, 60);
+		// self.building.createBuilding(250, 70);
+		// self.building.createBuilding(350, 80);
+		// self.building.createBuilding(450, 20);
 		
 		document.addEventListener('keydown', self.onkeydown, false);
 		document.addEventListener('keyup', self.onkeyup, false);
