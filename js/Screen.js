@@ -1,6 +1,7 @@
 function Screen(game){
 	this.gameWindow = document.getElementById('game-window');
 	this.innerScreen = document.getElementById('background');
+	this.city = document.getElementById('city')
 	// this.gameWindow = document.getElementById('main-screen');
 	// this.innerScreen = document.getElementById('inner-screen')
 	this.height = 400;

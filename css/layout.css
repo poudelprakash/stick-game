@@ -13,4 +13,9 @@
 	position: absolute;
 }
 .building{
+	background: url(../images/wall.png);
+}
+#city{
+	margin-left: 1px;
+	position: absolute;
 }

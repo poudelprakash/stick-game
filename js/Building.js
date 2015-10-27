@@ -1,5 +1,6 @@
 function Building(game){
 	this.gameWindow =  game.monitor.gameWindow;
+	this.city = game.monitor.city;
 	this.element; // html element of building
 	this.posX = 40;
 	this.posY = 0;
@@ -19,19 +20,19 @@ function Building(game){
 		}
 
 		self.element = document.createElement('div');
-		self.id = 'building'+i;
+		self.element.className = 'building';
 		self.element.style.width = self.width + 'px';
 		self.element.style.height = self.height + 'px';
 		self.element.style.left = self.posX + 'px';
 		self.element.style.bottom = self.posY + 'px';
 		self.element.style.background = '#000';
 		self.element.style.position = 'absolute';
-		self.gameWindow.appendChild(self.element);
+		self.city.appendChild(self.element);
 	}
 
 	this.moveLeft = function(){
 		self.posX = game.initialLeft;
-		self.element.style.left = self.posX + 'px';
+		self.city.style.left = -self.posX + 'px';
 	};
 
 	this.destroy = function(){

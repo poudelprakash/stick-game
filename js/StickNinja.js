@@ -50,7 +50,7 @@ function StickNinja(){
 			console.log('maryo');
 		}else{
 			console.log('bachyo');
-
+self.buildings[currentBuilding].moveLeft();
 			// self.buildings[currentBuilding].destroy();
 
 			// currentBuilding = nextBuilding;
